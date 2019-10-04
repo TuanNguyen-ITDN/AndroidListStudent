@@ -1,5 +1,6 @@
 package com.example.androidliststudent;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,15 +23,18 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StudentViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull StudentViewHolder holder, final int position) {
         holder.tvName.setText(students.get(position).getName());
         holder.tvAge.setText("," + students.get(position).getAge());
         holder.tvHometown.setText("," + students.get(position).getHometown());
         holder.tvHometown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+                onClick.onClickStudentDetail(position);
+
             }
+
+
         });
     }
 

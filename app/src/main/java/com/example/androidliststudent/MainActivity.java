@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -53,9 +54,17 @@ public class MainActivity extends AppCompatActivity {
         btn_Delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                students.remove(students.size()-1);
+                students.remove(students.size() - 1);
                 studentAdapter.notifyDataSetChanged();
             }
         });
+    }
+
+    public void onClickStudentDetail(int position) {
+        Intent studentDetail = new Intent(this, StudentDetail.class);
+        studentDetail.putExtra("Name", students.get(position).getName());
+        studentDetail.putExtra("Age", students.get(position).getAge());
+        studentDetail.putExtra("Hometown", students.get(position).getHometown());
+        startActivityForResult(studentDetail, 0);
     }
 }
