@@ -26,6 +26,12 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
         holder.tvName.setText(students.get(position).getName());
         holder.tvAge.setText("," + students.get(position).getAge());
         holder.tvHometown.setText("," + students.get(position).getHometown());
+        holder.tvHometown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+            }
+        });
     }
 
     @Override
